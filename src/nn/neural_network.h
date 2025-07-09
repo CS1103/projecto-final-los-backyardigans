@@ -2,9 +2,9 @@
 #define PROG3_NN_FINAL_PROJECT_V2025_01_NEURAL_NETWORK_H
 
 #pragma once
-#include "../nn_interfaces.h"
-#include "../nn_loss.h"
-#include "../nn_optimizer.h"
+#include "nn/nn_interfaces.h"
+#include "nn/nn_loss.h"
+#include "nn/nn_optimizer.h"
 #include <vector>
 #include <iomanip>
 #include <memory>
@@ -75,7 +75,7 @@ namespace utec {
                 if (pred_label == true_label) ++correct;
             }
             double accuracy = double(correct) / X_test.shape()[0];
-            std: cout << std::fixed << std::setprecision(6) << accuracy << std::endl;
+            std:: cout << std::fixed << std::setprecision(6) << accuracy << std::endl;
 
         }
     }

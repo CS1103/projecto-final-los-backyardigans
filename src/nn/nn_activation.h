@@ -2,7 +2,7 @@
 #define PROG3_NN_FINAL_PROJECT_V2025_01_ACTIVATION_H
 
 #pragma once
-#include "../nn_interfaces.h"
+#include "nn/nn_interfaces.h"
 #include <algorithm>
 #include <cmath>
 

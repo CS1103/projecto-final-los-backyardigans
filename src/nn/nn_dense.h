@@ -2,7 +2,7 @@
 #define PROG3_NN_FINAL_PROJECT_V2025_01_DENSE_H
 
 #pragma once
-#include "../nn_interfaces.h"
+#include "nn/nn_interfaces.h"
 
 namespace utec {
     namespace neural_network {
