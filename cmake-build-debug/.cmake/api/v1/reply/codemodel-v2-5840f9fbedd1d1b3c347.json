@@ -15,7 +15,9 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -30,7 +32,9 @@
 					"name" : "prog3_nn_final_project_v2025_01",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -39,8 +43,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "prog3_nn_final_project_v2025_01::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-prog3_nn_final_project_v2025_01-Debug-63a3febe55e088c3dc90.json",
+					"jsonFile" : "target-prog3_nn_final_project_v2025_01-Debug-4b9220f84e24095a4a2d.json",
 					"name" : "prog3_nn_final_project_v2025_01",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_relu::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_relu-Debug-a3b531b2913d048b811d.json",
+					"name" : "test_relu",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_tensor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_tensor-Debug-7320f76232f9b8db86f5.json",
+					"name" : "test_tensor",
 					"projectIndex" : 0
 				}
 			]
