@@ -16,7 +16,7 @@
 
 ---
 
-### Datos generales
+### 1. Datos generales
 
 * **Tema**: Redes Neuronales en AI
 * **Grupo**: `Los Backyardigans`
@@ -30,7 +30,7 @@
 
 ---
 
-### Requisitos e instalación
+### 2. Requisitos e instalación
 
 1. **Compilador**: GCC 11 o superior
 2. **Dependencias**:
@@ -52,13 +52,13 @@
 
 ---
 
-### 1. Investigación teórica
+### 3. Investigación teórica
 
 * **Objetivo**: Comprender los fundamentos matemáticos y computacionales de las redes neuronales artificiales, así como analizar su implementación modular en C++ mediante el desarrollo de un clasificador de imágenes numéricas (dígitos 0 y 1) basado en sus representaciones en píxeles.
 
 
 
-#### 1.1 Fundamentos matemáticos
+#### 3.1 Fundamentos matemáticos
 El comportamiento de una red neuronal está respaldado por una sólida base matemática, principalmente desde tres ramas: álgebra lineal, cálculo diferencial y optimización.
 
 
@@ -82,7 +82,7 @@ Para que una red neuronal aprenda, es necesario minimizar una función de pérdi
 - **Momentum**: técnica que acumula parte del gradiente pasado para evitar oscilaciones.
 - **Adam Optimizer**: combina adaptativamente las ventajas de RMSProp y Momentum, acelerando la convergencia.
 
-#### 1.2 Arquitecturas de redes neuronales
+#### 3.2 Arquitecturas de redes neuronales
 Se ha investigado y tomado como base arquitecturas fundamentales de redes neuronales artificiales:
 
 
@@ -102,7 +102,7 @@ Estas funciones permiten introducir no linealidad al modelo, habilitando su capa
 - **Sigmoid**: útil en tareas de clasificación binaria.
 - **Tanh**: función hiperbólica que centra los datos alrededor de cero.
 
-#### 1.3 Algoritmos de Entrenamiento
+#### 3.3 Algoritmos de Entrenamiento
 
 **Forward propagation**  
 Propaga los datos de entrada a través de las capas hasta obtener una predicción.
@@ -121,7 +121,7 @@ Calcula los gradientes de la función de pérdida respecto a los pesos usando la
 - **Binary Cross-Entropy**: adecuada para tareas de clasificación binaria.
 
 
-#### 1.4 Implementación en C++
+#### 3.4 Implementación en C++
 
 El sistema se desarrolló usando C++ moderno, haciendo uso intensivo de técnicas avanzadas del lenguaje:
 
@@ -139,9 +139,9 @@ La clase `Tensor<T, Rank>` está implementada con plantillas, lo que permite una
 
 ---
 
-### 2. Diseño e implementación
+### 4. Diseño e implementación
 
-#### 2.1 Arquitectura de la solución
+#### 4.1 Arquitectura de la solución
 
 El módulo `neural_network.h` representa el núcleo estructural de la arquitectura de red neuronal artificial desarrollada en el presente proyecto. La clase genérica `NeuralNetwork<T>` encapsula un enfoque modular y escalable, permitiendo construir modelos de aprendizaje profundo mediante una colección dinámica de capas (`layers`) que cumplen con la interfaz `ILayer<T>`.
 
@@ -155,9 +155,9 @@ La clase además incorpora funciones auxiliares como `predict()` (para inferenci
 
 
 
-#### 2.2 Manual de uso y casos de prueba
+#### 4.2 Manual de uso y casos de prueba
 
-##### 2.2.1 Carga de datos desde archivos CSV
+##### 4.2.1 Carga de datos desde archivos CSV
 
 ```cpp
 Tensor<float, 2> X = data::load_inputs("../data/digits01_inputs.csv");
@@ -171,7 +171,7 @@ Carga 360 muestras de imágenes (matriz X) y sus etiquetas correspondientes (Y),
 -**Formato:**
 Cada imagen tiene 64 características (8x8 pixeles planos) y cada etiqueta es un valor binario (0 o 1).
 
-#####  2.2.2 Barajado aleatorio y división en entrenamiento/prueba
+#####  4.2.2 Barajado aleatorio y división en entrenamiento/prueba
 
 ```cpp
 std::vector<size_t> indices(total_samples);
@@ -184,7 +184,7 @@ Carga 360 muestras de imágenes (matriz X) y sus etiquetas correspondientes (Y),
 
 -Luego divide los datos en conjuntos de entrenamiento en `X_train` y `Y_train` (80%) y prueba en `X_test` y `Y_test` (20%).
 
-##### 2.2.3 Agregado de ruido a las entradas
+##### 4.2.3 Agregado de ruido a las entradas
 
 ```cpp
 X(i, j) += noise(noise_gen);
@@ -196,7 +196,7 @@ Simula variabilidad en los datos, agregando ruido gaussiano con media 0 y desvia
 Ayuda a que la red no memorice y generalice mejor. Aumenta la robustez.
 
 
-##### 2.2.4 Inicialización de pesos (Xavier)
+##### 4.2.4 Inicialización de pesos (Xavier)
 
 ```cpp
 auto xavier_init = [&](auto& param) { ... }
@@ -207,7 +207,7 @@ Inicializa los pesos de la red de forma que se mantenga el flujo de señales est
 -**¿Por qué?**
 Evita que los gradientes exploten o desaparezcan durante el entrenamiento.
 
-##### 2.2.5 Construcción de la red neuronal
+##### 4.2.5 Construcción de la red neuronal
 
 ```cpp
 net.add_layer(...);
@@ -219,7 +219,7 @@ net.add_layer(...);
 - `Sigmoid` → convierte la salida en probabilidad entre 0 y 1
 
 
-##### 2.2.6 Entrenamiento
+##### 4.2.6 Entrenamiento
 
 ```cpp
 net.train<BCELoss>(X_train, Y_train, epochs, batch_size, learning_rate);
@@ -233,7 +233,7 @@ net.train<BCELoss>(X_train, Y_train, epochs, batch_size, learning_rate);
 -**Tasa de aprendizaje**: 0.01, controla la magnitud de las actualizaciones de pesos
 
 
-##### 2.2.7 Evaluación
+##### 4.2.7 Evaluación
 ```cpp
 auto preds = net.predict(X_test);
 ```
@@ -244,7 +244,7 @@ auto preds = net.predict(X_test);
 -Calcula el `accuracy` del modelo como porcentaje de aciertos sobre el total de muestras.
 
 
-##### 2.2.8 Interpretación de resultados
+##### 4.2.8 Interpretación de resultados
 
 ```cpp
 float accuracy = ...;
@@ -259,7 +259,7 @@ std::cout << "\nTest Accuracy: " << accuracy * 100 << "%\n";
 
 ---
 
-### 3. Trabajo en equipo
+### 5. Trabajo en equipo
 
 | Tarea                     | Miembro                             | Rol                       |
 |---------------------------|-------------------------------------|---------------------------|
@@ -270,13 +270,24 @@ std::cout << "\nTest Accuracy: " << accuracy * 100 << "%\n";
 
 ---
 
-### 4. Conclusiones
+### 6. Conclusiones
 
 Este proyecto permitió comprender a fondo los fundamentos matemáticos y computacionales de las redes neuronales artificiales, aplicándolos en una implementación modular en C++. Se logró construir un sistema flexible y escalable, usando técnicas avanzadas del lenguaje como templates, punteros inteligentes y patrones de diseño.
 El modelo fue probado con datos reales de imágenes binarias (dígitos 0 y 1), alcanzando una alta precisión gracias a buenas prácticas como la inicialización adecuada de pesos, la introducción de ruido para mejorar la generalización y el uso de optimizadores eficientes.
 Además, el trabajo en equipo permitió distribuir las tareas de forma equilibrada, combinando teoría, desarrollo e implementación, lo que fortaleció tanto las habilidades técnicas como la colaboración entre los integrantes.
 
+---
 
+### 7. Referencias
+- **I. Goodfellow, Y. Bengio, y A. Courville**, *Deep Learning*. MIT Press, 2016. [En línea]. Disponible: [https://www.deeplearningbook.org/](https://www.deeplearningbook.org/)
+
+- **M. A. Nielsen**, *Neural Networks and Deep Learning*. Determination Press, 2015. [En línea]. Disponible: [http://neuralnetworksanddeeplearning.com/](http://neuralnetworksanddeeplearning.com/)
+
+- **S. Ruder**, *An overview of gradient descent optimization algorithms*, Sep. 2016. [En línea]. Disponible: [https://ruder.io/optimizing-gradient-descent/](https://ruder.io/optimizing-gradient-descent/)
+
+- **K. Greff et al.**, *LSTM: A Search Space Odyssey*, *IEEE Transactions on Neural Networks and Learning Systems*, vol. 28, no. 10, pp. 2222–2232, Oct. 2017.
+
+- **J. Schmidhuber**, *Deep Learning in Neural Networks: An Overview*, *Neural Networks*, vol. 61, pp. 85–117, 2015. [En línea]. Disponible: [https://doi.org/10.1016/j.neunet.2014.09.003](https://doi.org/10.1016/j.neunet.2014.09.003)
 
 
 
